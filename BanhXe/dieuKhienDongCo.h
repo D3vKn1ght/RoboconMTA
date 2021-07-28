@@ -1,67 +1,67 @@
 void tien()
-{
-
-    digitalWrite(R_EN_L1, HIGH);
-    digitalWrite(L_EN_L1, LOW);
-    digitalWrite(R_EN_L2, HIGH);
-    digitalWrite(L_EN_L2, LOW);
-    digitalWrite(R_EN_R1, LOW);
-    digitalWrite(L_EN_R1, HIGH);
-    digitalWrite(R_EN_R2, LOW);
-    digitalWrite(L_EN_R2, HIGH);
+{    
+    analogWrite(RPWM_L1, LSpeed);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, LSpeed);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, RSpeed);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, RSpeed);
 }
 
 void lui()
-{
-    digitalWrite(R_EN_L1, LOW);
-    digitalWrite(L_EN_L1, HIGH);
-    digitalWrite(R_EN_L2, LOW);
-    digitalWrite(L_EN_L2, HIGH);
-    digitalWrite(R_EN_R1, HIGH);
-    digitalWrite(L_EN_R1, LOW);
-    digitalWrite(R_EN_R2, HIGH);
-    digitalWrite(L_EN_R2, LOW);
+{ 
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, LSpeed);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, LSpeed);
+    analogWrite(RPWM_R1, RSpeed);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, RSpeed);
+    analogWrite(LPWM_R2, 0);
 }
 
 void phai()
 {
-    Speed = 50;
-    digitalWrite(R_EN_L1, HIGH);
-    digitalWrite(L_EN_L1, LOW);
-    digitalWrite(R_EN_L2, HIGH);
-    digitalWrite(L_EN_L2, LOW);
-    digitalWrite(R_EN_R1, HIGH);
-    digitalWrite(L_EN_R1, LOW);
-    digitalWrite(R_EN_R2, HIGH);
-    digitalWrite(L_EN_R2, LOW);
+    LSpeed = 255;
+    RSpeed = 255;
+    analogWrite(RPWM_L1, LSpeed);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, LSpeed);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, RSpeed);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, RSpeed);
+    analogWrite(LPWM_R2, 0);
 }
 
 void trai()
-{
-    Speed = 50;
-    digitalWrite(R_EN_L1, LOW);
-    digitalWrite(L_EN_L1, HIGH);
-    digitalWrite(R_EN_L2, LOW);
-    digitalWrite(L_EN_L2, HIGH);
-    digitalWrite(R_EN_R1, LOW);
-    digitalWrite(L_EN_R1, HIGH);
-    digitalWrite(R_EN_R2, LOW);
-    digitalWrite(L_EN_R2, HIGH);
+{    
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, LSpeed);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, LSpeed);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, RSpeed);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, RSpeed);
 }
 
 void tienCham()
 {
-    Speed = 50;
+    LSpeed = 50;
+    RSpeed=50;
     tien();
 }
 void dung()
 {
-    digitalWrite(R_EN_L1, LOW);
-    digitalWrite(L_EN_L1, LOW);
-    digitalWrite(R_EN_L2, LOW);
-    digitalWrite(L_EN_L2, LOW);
-    digitalWrite(R_EN_R1, LOW);
-    digitalWrite(L_EN_R1, LOW);
-    digitalWrite(R_EN_R2, LOW);
-    digitalWrite(L_EN_R2, LOW);
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, 0);
 }

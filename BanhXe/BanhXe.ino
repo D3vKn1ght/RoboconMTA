@@ -2,28 +2,26 @@
 #include "Chung.h"
 #include "dieuKhienDongCo.h"
 void setup()
-{
-  // put your setup code here, to run once:
-  analogWrite(RPWM_L1, Speed);
-  analogWrite(LPWM_L1, Speed);
-  analogWrite(RPWM_L2, Speed);
-  analogWrite(LPWM_L2, Speed);
-  analogWrite(RPWM_R1, Speed);
-  analogWrite(LPWM_R1, Speed);
-  analogWrite(RPWM_R2, Speed);
-  analogWrite(LPWM_R2, Speed);
+{ 
+  khoiTao();
 }
 
 void loop()
 {
+  LSpeed = 140;
+  RSpeed = 140;
   tien();
-  delay(1000);
+  delay(5000);
+  LSpeed = 255;
+   RSpeed = 255;
   phai();
-  delay(1000);
+  delay(5000);
   trai();
-  delay(1000);
+  delay(5000);
+  LSpeed = 140;
+  RSpeed = 140;
   lui();
-  delay(1000);
+  delay(5000);
   dung();
   delay(3000);
 }
