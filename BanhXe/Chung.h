@@ -14,7 +14,7 @@ int RPWM_R1 = 6;
 int LPWM_R1 = 7;
 int RPWM_R2 = 8;
 int LPWM_R2 = 9;
-int Speed = 140;
+int TocDoXoay = 255;
 int LSpeed = 140;
 int RSpeed =140;
 
