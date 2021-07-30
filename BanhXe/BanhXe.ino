@@ -1,24 +1,33 @@
 #include <stdio.h>
 #include "Chung.h"
 #include "dieuKhienDongCo.h"
+#include "CamBienTien.h"
+#include "CamBienLui.h"
 void setup()
 { 
   khoiTao();
+
+  Time1 = millis();
+
+tien();
 }
 
 void loop()
-{
-  LSpeed = 140;
-  RSpeed = 140;
-  tien();
-  delay(5000);
-  TocDoXoay =255;
-  phai();
-  delay(5000);
-  trai();
-  delay(5000);  
-  lui();
-  delay(5000);
-  dung();
-  delay(3000);
+{  
+
+    doc_CBT();
+//    for ( int i=0;i<8;i++){
+//       
+//  Serial.print(Tien[i]);
+//  Serial.print("\t");
+//  
+//    }
+//     Serial.print("\n");
+//     ;
+    DK_Tien();
+
+    
+
+ 
+  
 }

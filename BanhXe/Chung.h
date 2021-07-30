@@ -1,24 +1,77 @@
-int R_EN_L1 = 20;
-int L_EN_L1 = 21;
-int R_EN_L2 = 22;
-int L_EN_L2 = 23;
-int R_EN_R1 = 24;
-int L_EN_R1 = 25;
-int R_EN_R2 = 26;
-int L_EN_R2 = 27;
-int RPWM_L1 = 2;
-int LPWM_L1 = 3;
-int RPWM_L2 = 4;
-int LPWM_L2 = 5;
-int RPWM_R1 = 6;
-int LPWM_R1 = 7;
-int RPWM_R2 = 8;
-int LPWM_R2 = 9;
+//----------------------------------------Dong co ---------------------------------//
+#define R_EN_L1 20
+#define L_EN_L1 21
+#define R_EN_L2 22
+#define L_EN_L2 23
+#define R_EN_R1 24
+#define L_EN_R1 25
+#define R_EN_R2 26
+#define L_EN_R2 27
+#define RPWM_L1 2
+#define LPWM_L1 3
+#define RPWM_L2 4
+#define LPWM_L2 5
+#define RPWM_R1 6
+#define LPWM_R1 7
+#define RPWM_R2 8
+#define LPWM_R2 9
 int TocDoXoay = 255;
-int LSpeed = 140;
-int RSpeed =140;
+int SetTocDo = 70 ;
+int LSpeed=SetTocDo;
+int RSpeed=SetTocDo;
 
+//----------------------------------------Cam Bien Tien ---------------------------------//
+#define camBienTien1 A0
+#define camBienTien2 A4
+#define camBienTien3 A1
+#define camBienTien4 A5
+#define camBienTien5 A2
+#define camBienTien6 A6
+#define camBienTien7 A3
+#define camBienTien8 A7
+int Tien[8];
+int GTtien[8];
+int  it;
+float Et, Errort = 0, previous_Errort = 0;
+float PID_value_Tien;
+int St, Tt;
+float Pt = 0, It = 0, Dt = 0, previous_It = 0;
+float Kp = 50;
+float Kd = 35 ;
+float Ki = 0.001;
+//----------------------------------------Cam Bien Lui ---------------------------------//
+#define camBienLui1 A8
+#define camBienLui2 A9
+#define camBienLui3 A10
+#define camBienLui4 A11
+#define camBienLui5 A12
+#define camBienLui6 A13
+#define camBienLui7 A14
+#define camBienLui8 A15
+int SSLui[8];
+int GTlui[8];
+int  iLui;
+float El, Errorl = 0, previous_Errorl = 0;
+float PID_value_Lui = 0;
+int Sl, Tl;
+float Pl = 0, Il = 0, Dl = 0, previous_Il = 0;
+float Kp2 = 20;
+float Kd2 = 30 ;
+float Ki2 = 0.001;
+
+//----------------------------------------Khoi tao ---------------------------------//
+int tb = 700;
+unsigned long Time1;
 void khoiTao(){
+  Serial.begin(9600);
+  pinMode(camBienTien1, INPUT);
+  pinMode(camBienTien2, INPUT);
+  pinMode(camBienTien3, INPUT);
+  pinMode(camBienTien4, INPUT);
+  pinMode(camBienTien5, INPUT);
+  pinMode(camBienTien6, INPUT);
+  pinMode(camBienTien7, INPUT);
+  pinMode(camBienTien8, INPUT);
   pinMode(R_EN_L1, OUTPUT);
   pinMode(L_EN_L1, OUTPUT);
   pinMode(R_EN_L2, OUTPUT);
