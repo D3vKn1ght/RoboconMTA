@@ -1,15 +1,9 @@
 
 void doc_CBT()
 {
-  SetTocDo = 130;
+  SetTocDo = 100;
   LSpeed = SetTocDo;
   RSpeed = SetTocDo;
-
-  //  digitalWrite(CB2, HIGH);
-  //  digitalWrite(CB1, LOW);    // dua ve setup
-
-  Tt = 0;
-  St = 0;
   Tien[0]  = analogRead(camBienTien1);
   Tien[1]  = analogRead(camBienTien2);
   Tien[2]  = analogRead(camBienTien3);
@@ -18,8 +12,7 @@ void doc_CBT()
   Tien[5]  = analogRead(camBienTien6);
   Tien[6]  = analogRead(camBienTien7);
   Tien[7]  = analogRead(camBienTien8);
-  //for (it = 0; it <= 7; it++)
-  for (it = 1; it < 7; it++)
+  for (it = 0; it <= 7; it++)
   {
     if (Tien[it] < tb)
     {
@@ -50,10 +43,10 @@ void doc_CBT()
   {
     Errort = -2;
   }
-  //    else if (GTtien[0] == 1)
-  //    {
-  //        Errort = 3;
-  //    }
+  else if (GTtien[0] == 1)
+  {
+    Errort = 3;
+  }
   else if (GTtien[7] == 1)
   {
     Errort = -3;

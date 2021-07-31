@@ -2,11 +2,9 @@
 void doc_CBL()
 {
 
-  SetTocDo = 85;
-  //  digitalWrite(CB2, LOW);
-  //  digitalWrite(CB1, HIGH);
-  Tl = 0;
-  Sl = 0;
+  SetTocDo = 80;
+  LSpeed = SetTocDo;
+  RSpeed = SetTocDo;
   SSLui[0]  = analogRead(camBienLui1);
   SSLui[1]  = analogRead(camBienLui2);
   SSLui[2]  = analogRead(camBienLui3);
@@ -18,8 +16,6 @@ void doc_CBL()
 
   for (iLui = 0; iLui <= 7; iLui++)
   {
-    //    Serial.print(SSLui[iLui]);
-    //    Serial.print("\t");
     if (SSLui[iLui] < tb)
     {
       GTlui[iLui] = 0;
@@ -27,41 +23,64 @@ void doc_CBL()
     else
     {
       GTlui[iLui] = 1;
-      Sl = Sl + GTlui[iLui];
-      Tl += iLui;
+
     }
-
   }
-  El = float(Tl) / Sl;
-  //  Serial.print("\t");
-  //  Serial.print(El);
-  //  Serial.println();
-  Errorl = 3.5 - El;
-
-  if (Tl == 0)
+  if (GTlui[3] == 1 || GTlui[4] == 1)
   {
-    Errorl = previous_Errorl;
+    Errorl = 0;
+  }
+  else if (GTlui[2] == 1)
+  {
+    Errorl = 1;
+  }
+  else if (GTlui[5] == 1)
+  {
+    Errorl = -1;
+  }
+  else if (GTlui[1] == 1)
+  {
+    Errorl = 2;
+  }
+  else if (GTlui[6] == 1)
+  {
+    Errorl = -2;
+  }
+  else if (GTlui[0] == 1)
+  {
+    Errorl = 3;
+  }
+  else if (GTlui[7] == 1)
+  {
+    Errorl = -3;
   }
   Pl = Errorl;
   Il = Il + previous_Il;
   Dl = Errorl - previous_Errorl;
 
   PID_value_Lui = (Kp2 * Pl) + (Ki2 * Il) + (Kd2 * Dl);
-  previous_Il = Il;
   previous_Errorl = Errorl;
 }
 
 void DK_Lui()
 {
-  int LSpeed = SetTocDo + PID_value_Lui;
-  int RSpeed = SetTocDo - PID_value_Lui;
+  dung();
+  LSpeed = SetTocDo  - PID_value_Tien;
+  RSpeed = SetTocDo + PID_value_Tien;
+  LSpeed = constrain(LSpeed, 0, 255);
+  RSpeed = constrain(RSpeed, 0, 255);
 
   LSpeed = constrain(LSpeed, 25, 255);
   RSpeed = constrain(RSpeed, 25, 255);
 
   lui();
+  //  Serial.println();
+  //  Serial.print(PID_value_Lui);
   //  Serial.print("\t\t");
+  //  Serial.print("\t");
   //  Serial.print(LSpeed);
+  //
   //  Serial.print("\t");
   //  Serial.print(RSpeed);
+  //  Serial.print("\n");
 }
