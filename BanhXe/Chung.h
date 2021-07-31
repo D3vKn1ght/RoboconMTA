@@ -17,8 +17,8 @@
 #define LPWM_R2 9
 int TocDoXoay = 255;
 int SetTocDo = 70 ;
-int LSpeed=SetTocDo;
-int RSpeed=SetTocDo;
+int LSpeed = SetTocDo;
+int RSpeed = SetTocDo;
 
 //----------------------------------------Cam Bien Tien ---------------------------------//
 #define camBienTien1 A0
@@ -62,7 +62,7 @@ float Ki2 = 0.001;
 //----------------------------------------Khoi tao ---------------------------------//
 int tb = 700;
 unsigned long Time1;
-void khoiTao(){
+void khoiTao() {
   Serial.begin(9600);
   pinMode(camBienTien1, INPUT);
   pinMode(camBienTien2, INPUT);

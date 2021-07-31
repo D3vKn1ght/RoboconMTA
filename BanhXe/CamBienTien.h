@@ -1,12 +1,12 @@
 
 void doc_CBT()
-{  
-  SetTocDo=130;
+{
+  SetTocDo = 130;
   LSpeed = SetTocDo;
   RSpeed = SetTocDo;
 
-//  digitalWrite(CB2, HIGH);
-//  digitalWrite(CB1, LOW);    // dua ve setup
+  //  digitalWrite(CB2, HIGH);
+  //  digitalWrite(CB1, LOW);    // dua ve setup
 
   Tt = 0;
   St = 0;
@@ -18,7 +18,7 @@ void doc_CBT()
   Tien[5]  = analogRead(camBienTien6);
   Tien[6]  = analogRead(camBienTien7);
   Tien[7]  = analogRead(camBienTien8);
- //for (it = 0; it <= 7; it++)
+  //for (it = 0; it <= 7; it++)
   for (it = 1; it < 7; it++)
   {
     if (Tien[it] < tb)
@@ -31,33 +31,33 @@ void doc_CBT()
     }
   }
   if (GTtien[3] == 1 || GTtien[4] == 1)
-    {
-        Errort = 0;
-    }
-    else if (GTtien[2] == 1)
-    {
-        Errort = 1;
-    }
-    else if (GTtien[5] == 1)
-    {
-        Errort = -1;
-    }
-    else if (GTtien[1] == 1)
-    {
-        Errort = 2;
-    }
-    else if (GTtien[6] == 1)
-    {
-        Errort = -2;
-    }
-//    else if (GTtien[0] == 1)
-//    {
-//        Errort = 3;
-//    }
-    else if (GTtien[7] == 1)
-    {
-        Errort = -3;
-    }
+  {
+    Errort = 0;
+  }
+  else if (GTtien[2] == 1)
+  {
+    Errort = 1;
+  }
+  else if (GTtien[5] == 1)
+  {
+    Errort = -1;
+  }
+  else if (GTtien[1] == 1)
+  {
+    Errort = 2;
+  }
+  else if (GTtien[6] == 1)
+  {
+    Errort = -2;
+  }
+  //    else if (GTtien[0] == 1)
+  //    {
+  //        Errort = 3;
+  //    }
+  else if (GTtien[7] == 1)
+  {
+    Errort = -3;
+  }
   //  Serial.println(Errort);
   //  Serial.print("\t");
   Pt = Errort;
@@ -70,22 +70,22 @@ void doc_CBT()
 
 void DK_Tien()
 {
-   dung();
-   LSpeed = SetTocDo  + PID_value_Tien;
-   RSpeed = SetTocDo - PID_value_Tien;
+  dung();
+  LSpeed = SetTocDo  + PID_value_Tien;
+  RSpeed = SetTocDo - PID_value_Tien;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
 
- tien();
+  tien();
 
-    Serial.println();
-    Serial.print(PID_value_Tien);
-    Serial.print("\t\t");
+  Serial.println();
+  Serial.print(PID_value_Tien);
+  Serial.print("\t\t");
   Serial.print("\t");
   Serial.print(LSpeed);
 
   Serial.print("\t");
   Serial.print(RSpeed);
-   Serial.print("\n");
+  Serial.print("\n");
 
 }
