@@ -15,11 +15,11 @@ void loop()
 {
 
   doc_CBT();
-  //  for ( int i=0;i<=7;i++){
-  //    Serial.print(GTtien[i]);
-  //    Serial.print('\t');
-  //  }
-  //  Serial.print("\n");
+  //    for ( int i=0;i<=7;i++){
+  //      Serial.print(Tien[i]);
+  //      Serial.print('\t');
+  //    }
+  //    Serial.print("\n");
   if ((GTtien[7] && GTtien[5]) || (GTtien[2] && GTtien[0])) {
     dung();
     delay(100);
@@ -29,6 +29,7 @@ void loop()
     delay(2000);
     DK_Tien();
     delay(220);
+    doc_CBT();
   }
   DK_Tien();
 

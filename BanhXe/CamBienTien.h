@@ -71,14 +71,14 @@ void DK_Tien()
 
   tien();
 
-  Serial.println();
-  Serial.print(PID_value_Tien);
-  Serial.print("\t\t");
-  Serial.print("\t");
-  Serial.print(LSpeed);
-
-  Serial.print("\t");
-  Serial.print(RSpeed);
-  Serial.print("\n");
+  //  Serial.println();
+  //  Serial.print(PID_value_Tien);
+  //  Serial.print("\t\t");
+  //  Serial.print("\t");
+  //  Serial.print(LSpeed);
+  //
+  //  Serial.print("\t");
+  //  Serial.print(RSpeed);
+  //  Serial.print("\n");
 
 }

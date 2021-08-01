@@ -36,9 +36,9 @@ float Et, Errort = 0, previous_Errort = 0;
 float PID_value_Tien;
 int St, Tt;
 float Pt = 0, It = 0, Dt = 0, previous_It = 0;
-float Kp = 50;
-float Kd = 35 ;
-float Ki = 0.001;
+float Kp = 45;
+float Kd = 40 ;
+float Ki = 0;
 //----------------------------------------Cam Bien Lui ---------------------------------//
 #define camBienLui1 A8
 #define camBienLui2 A9
