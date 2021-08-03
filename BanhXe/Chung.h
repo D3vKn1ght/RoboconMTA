@@ -61,7 +61,8 @@ float Ki2 = 0.001;
 
 //----------------------------------------Khoi tao ---------------------------------//
 int tb = 700;
-unsigned long Time1;
+unsigned long TimeTemp;
+int dem=0;
 void khoiTao() {
   Serial.begin(9600);
   pinMode(camBienTien1, INPUT);

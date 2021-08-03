@@ -3,12 +3,13 @@
 #include "dieuKhienDongCo.h"
 #include "CamBienTien.h"
 #include "CamBienLui.h"
+#include "DiemThaBong.h"
 void setup()
 {
   khoiTao();
 
-  Time1 = millis();
   tien();
+  dem = 0;
 }
 
 void loop()
@@ -21,18 +22,12 @@ void loop()
   //    }
   //    Serial.print("\n");
   if ((GTtien[7] && GTtien[5]) || (GTtien[2] && GTtien[0])) {
-    dung();
-    delay(100);
-    lui();
-    delay(200);
-    dung();
-    delay(2000);
-    DK_Tien();
-    delay(220);
-    doc_CBT();
+    dem++;
+
+    diemThaBong();
+
   }
   DK_Tien();
-
 
 
 
