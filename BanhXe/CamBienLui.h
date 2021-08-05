@@ -2,9 +2,6 @@
 void doc_CBL()
 {
 
-  SetTocDo = 80;
-  LSpeed = SetTocDo;
-  RSpeed = SetTocDo;
   SSLui[0]  = analogRead(camBienLui1);
   SSLui[1]  = analogRead(camBienLui2);
   SSLui[2]  = analogRead(camBienLui3);
@@ -64,14 +61,14 @@ void doc_CBL()
 
 void DK_Lui()
 {
-  dung();
-  LSpeed = SetTocDo  - PID_value_Tien;
-  RSpeed = SetTocDo + PID_value_Tien;
+  
+  SetTocDo = 75;
+  doc_CBL();
+  delay(10);
+  LSpeed = SetTocDo  + PID_value_Lui;
+  RSpeed = SetTocDo - PID_value_Lui;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
-
-  LSpeed = constrain(LSpeed, 25, 255);
-  RSpeed = constrain(RSpeed, 25, 255);
 
   lui();
   //  Serial.println();

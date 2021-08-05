@@ -1,3 +1,4 @@
+#define congTacHanhTrinh 35
 //----------------------------------------Dong co ---------------------------------//
 #define R_EN_L1 20
 #define L_EN_L1 21
@@ -41,12 +42,12 @@ float Kd = 40 ;
 float Ki = 0;
 //----------------------------------------Cam Bien Lui ---------------------------------//
 #define camBienLui1 A8
-#define camBienLui2 A9
-#define camBienLui3 A10
-#define camBienLui4 A11
-#define camBienLui5 A12
-#define camBienLui6 A13
-#define camBienLui7 A14
+#define camBienLui2 A12
+#define camBienLui3 A9
+#define camBienLui4 A13
+#define camBienLui5 A10
+#define camBienLui6 A14
+#define camBienLui7 A11
 #define camBienLui8 A15
 int SSLui[8];
 int GTlui[8];
@@ -55,16 +56,17 @@ float El, Errorl = 0, previous_Errorl = 0;
 float PID_value_Lui = 0;
 int Sl, Tl;
 float Pl = 0, Il = 0, Dl = 0, previous_Il = 0;
-float Kp2 = 20;
-float Kd2 = 30 ;
-float Ki2 = 0.001;
+float Kp2 = 35;
+float Kd2 = 35 ;
+float Ki2 = 0;
 
 //----------------------------------------Khoi tao ---------------------------------//
 int tb = 700;
 unsigned long TimeTemp;
-int dem=0;
+int dem = 0;
 void khoiTao() {
   Serial.begin(9600);
+  pinMode(congTacHanhTrinh, INPUT);
   pinMode(camBienTien1, INPUT);
   pinMode(camBienTien2, INPUT);
   pinMode(camBienTien3, INPUT);
@@ -73,6 +75,14 @@ void khoiTao() {
   pinMode(camBienTien6, INPUT);
   pinMode(camBienTien7, INPUT);
   pinMode(camBienTien8, INPUT);
+  pinMode(camBienLui1, INPUT);
+  pinMode(camBienLui2, INPUT);
+  pinMode(camBienLui3, INPUT);
+  pinMode(camBienLui4, INPUT);
+  pinMode(camBienLui5, INPUT);
+  pinMode(camBienLui6, INPUT);
+  pinMode(camBienLui7, INPUT);
+  pinMode(camBienLui8, INPUT);
   pinMode(R_EN_L1, OUTPUT);
   pinMode(L_EN_L1, OUTPUT);
   pinMode(R_EN_L2, OUTPUT);
