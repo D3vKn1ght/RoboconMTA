@@ -28,7 +28,7 @@ void loop()
     for (int i = 0; i < 6; i++) {
       doc_CBT();
       doc_CBL();
-      delay(10);
+      delay(20);
     }    
   }
   if (dem == 0) {
