@@ -9,23 +9,20 @@
 void setup()
 {
   khoiTao();
-
   tien();
   dem = 0;
-
 
 }
 
 void loop()
 {
-  doc_CBT(); 
- 
+  doc_CBT();
 
-//      for (int i = 0; i <= 7; i++) {
-//        Serial.print(Tien[i]);
-//        Serial.print("\t");
-//      }
-//      Serial.print("\n");
+  //        for (int i = 0; i <= 7; i++) {
+  //          Serial.print(Tien[i]);
+  //          Serial.print("\t");
+  //        }
+  //        Serial.print("\n");
   if ((GTtien[0] && GTtien[3]) || (GTtien[1] && GTtien[4]) || (GTtien[2] && GTtien[5]) || (GTtien[3] && GTtien[6]) || (GTtien[4] && GTtien[7]) ) {
     dem++;
     TimeTemp = millis();
@@ -50,24 +47,26 @@ void loop()
   }
   else if (dem >= 4) {
     doc_CBL();
-//      for (int i = 0; i <= 7; i++) {
-//        Serial.print(SSLui[i]);
-//        Serial.print("\t");
-//      }
-//      Serial.print("\n");
+    //      for (int i = 0; i <= 7; i++) {
+    //        Serial.print(SSLui[i]);
+    //        Serial.print("\t");
+    //      }
+    //      Serial.print("\n");
     DK_Lui();
-    //    if (digitalRead(congTacHanhTrinh)) {
-    //     if (digitalRead(congTacHanhTrinh)) {                                                                                                                                                                               //    if (digitalRead(congTacHanhTrinh)) {
-    //      dung();
-    //      ThaBong();
-    //      delay(50);
-    //      veLine();
-    //      dem = 0;
-    //    }
+    if (digitalRead(congTacHanhTrinh)) {                                                                                                                                                                               //    if (digitalRead(congTacHanhTrinh)) {
+      dung();
+      ThaBong();
+      delay(50);
+      veLine();
+      dem = 0;
+    }
   }
+
   else {
     DK_Tien();
   }
+
+
 
 
 }

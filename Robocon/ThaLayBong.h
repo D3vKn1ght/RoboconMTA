@@ -27,18 +27,13 @@ void diemLayBong() {
   }
   tienCham();
   delay(200);
-  
+
   trai();
-  delay(200);
-  doc_CBT();
-  doc_CBL();
-  delay(200);
-  doc_CBT();
-  doc_CBL();
-  delay(200);
-  doc_CBT();
-  doc_CBL();
-  delay(200);
+  for (int i = 0; i < 4; i++) {
+    doc_CBT();
+    doc_CBL();
+    delay(200);
+  }
   doc_CBT();
   doc_CBL();
   TimeTemp = millis();
@@ -53,48 +48,54 @@ void diemLayBong() {
 void veLine() {
   TimeTemp = millis();
   tien();
-  delay(200);
-  doc_CBT();
-  delay(200);
-  doc_CBT();
-  delay(100);
-  doc_CBT();
+  for (int i = 0; i < 9; i++) {
+    doc_CBT();
+    delay(200);
+  }
+
 
   dung();
   delay(500);
 
   phai();
-  delay(200);
-  doc_CBT();
-  delay(200);
-  doc_CBT();
-  delay(200);
-  doc_CBT();
-  delay(200);
-  doc_CBT();
+  for (int i = 0; i < 18; i++) {
+    doc_CBT();
+    delay(200);
+  }
+
+
 
   dung();
   delay(500);
 
   tienCham();
-  delay(50);
+  for (int i = 0; i < 2; i++) {
+    doc_CBT();
+    delay(200);
+  }
   TimeTemp = millis();
-  while ((millis() - TimeTemp) < 150 ) {
+  while ((millis() - TimeTemp) < 50 ) {
     doc_CBT();
   }
-
-  tienCham();
   while (!(GTtien[3] || GTtien[4] )) {
     doc_CBT();
   }
 
 
 
-  phai();
-  delay(200);
-  doc_CBT();
-  delay(200);
-  doc_CBT();
+  //  phai();
+  // for (int i = 0; i < 2; i++) {
+  //    doc_CBT();
+  //    delay(200);
+  //  }
+
+
+
+  tienCham();
+  for (int i = 0; i < 3; i++) {
+    doc_CBT();
+    delay(200);
+  }
   TimeTemp = millis();
   while ((millis() - TimeTemp) < 200 ) {
     doc_CBT();

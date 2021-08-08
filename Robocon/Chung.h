@@ -1,4 +1,4 @@
-#define congTacHanhTrinh 35
+#define congTacHanhTrinh 26
 //----------------------------------------Dong co ---------------------------------//
 #define R_EN_L 20
 #define L_EN_L 21
