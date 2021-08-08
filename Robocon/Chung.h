@@ -1,22 +1,14 @@
 #define congTacHanhTrinh 35
 //----------------------------------------Dong co ---------------------------------//
-#define R_EN_L1 20
-#define L_EN_L1 21
-#define R_EN_L2 22
-#define L_EN_L2 23
-#define R_EN_R1 24
-#define L_EN_R1 25
-#define R_EN_R2 26
-#define L_EN_R2 27
-#define RPWM_L1 2
-#define LPWM_L1 3
-#define RPWM_L2 4
-#define LPWM_L2 5
-#define RPWM_R1 6
-#define LPWM_R1 7
-#define RPWM_R2 8
-#define LPWM_R2 9
-int TocDoXoay = 255;
+#define R_EN_L 20
+#define L_EN_L 21
+#define R_EN_R 24
+#define L_EN_R 25
+#define RPWM_L 2
+#define LPWM_L 3
+#define RPWM_R 6
+#define LPWM_R 7
+int TocDoXoay = 150;
 int SetTocDo = 70 ;
 int LSpeed = SetTocDo;
 int RSpeed = SetTocDo;
@@ -37,17 +29,17 @@ float Et, Errort = 0, previous_Errort = 0;
 float PID_value_Tien;
 int St, Tt;
 float Pt = 0, It = 0, Dt = 0, previous_It = 0;
-float Kp = 45;
-float Kd = 40 ;
+float Kp = 40;
+float Kd = 30 ;
 float Ki = 0;
 //----------------------------------------Cam Bien Lui ---------------------------------//
 #define camBienLui1 A8
-#define camBienLui2 A12
-#define camBienLui3 A9
-#define camBienLui4 A13
-#define camBienLui5 A10
-#define camBienLui6 A14
-#define camBienLui7 A11
+#define camBienLui2 A9
+#define camBienLui3 A10
+#define camBienLui4 A11
+#define camBienLui5 A12
+#define camBienLui6 A13
+#define camBienLui7 A14
 #define camBienLui8 A15
 int SSLui[8];
 int GTlui[8];
@@ -56,12 +48,14 @@ float El, Errorl = 0, previous_Errorl = 0;
 float PID_value_Lui = 0;
 int Sl, Tl;
 float Pl = 0, Il = 0, Dl = 0, previous_Il = 0;
-float Kp2 = 35;
-float Kd2 = 35 ;
+float Kp2 = 40;
+float Kd2 = 30 ;
 float Ki2 = 0;
 
 //----------------------------------------Khoi tao ---------------------------------//
-int tb = 700;
+int tb = 500;
+bool viTri[] = {false, true, true, true, true, true, true};
+int iViTri = 0;
 unsigned long TimeTemp;
 int dem = 0;
 void khoiTao() {
@@ -83,28 +77,16 @@ void khoiTao() {
   pinMode(camBienLui6, INPUT);
   pinMode(camBienLui7, INPUT);
   pinMode(camBienLui8, INPUT);
-  pinMode(R_EN_L1, OUTPUT);
-  pinMode(L_EN_L1, OUTPUT);
-  pinMode(R_EN_L2, OUTPUT);
-  pinMode(L_EN_L2, OUTPUT);
-  pinMode(R_EN_R1, OUTPUT);
-  pinMode(L_EN_R1, OUTPUT);
-  pinMode(R_EN_R2, OUTPUT);
-  pinMode(L_EN_R2, OUTPUT);
-  pinMode(RPWM_L1, OUTPUT);
-  pinMode(LPWM_L1, OUTPUT);
-  pinMode(RPWM_L2, OUTPUT);
-  pinMode(LPWM_L2, OUTPUT);
-  pinMode(RPWM_R1, OUTPUT);
-  pinMode(LPWM_R1, OUTPUT);
-  pinMode(RPWM_R2, OUTPUT);
-  pinMode(LPWM_R2, OUTPUT);
-  digitalWrite(R_EN_L1, HIGH);
-  digitalWrite(L_EN_L1, HIGH);
-  digitalWrite(R_EN_L2, HIGH);
-  digitalWrite(L_EN_L2, HIGH);
-  digitalWrite(R_EN_R1, HIGH);
-  digitalWrite(L_EN_R1, HIGH);
-  digitalWrite(R_EN_R2, HIGH);
-  digitalWrite(L_EN_R2, HIGH);
+  pinMode(R_EN_L, OUTPUT);
+  pinMode(L_EN_L, OUTPUT);
+  pinMode(R_EN_R, OUTPUT);
+  pinMode(L_EN_R, OUTPUT);
+  pinMode(RPWM_L, OUTPUT);
+  pinMode(LPWM_L, OUTPUT);
+  pinMode(RPWM_R, OUTPUT);
+  pinMode(LPWM_R, OUTPUT);
+  digitalWrite(R_EN_L, HIGH);
+  digitalWrite(L_EN_L, HIGH);
+  digitalWrite(R_EN_R, HIGH);
+  digitalWrite(L_EN_R, HIGH);
 }

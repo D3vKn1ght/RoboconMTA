@@ -13,7 +13,7 @@ void doc_CBL()
 
   for (iLui = 0; iLui <= 7; iLui++)
   {
-    if (SSLui[iLui] < tb)
+    if (SSLui[iLui] > tb)
     {
       GTlui[iLui] = 0;
     }
@@ -61,23 +61,22 @@ void doc_CBL()
 
 void DK_Lui()
 {
-  
+
   SetTocDo = 75;
-  doc_CBL();
-  delay(10);
   LSpeed = SetTocDo  + PID_value_Lui;
   RSpeed = SetTocDo - PID_value_Lui;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
 
   lui();
-  //  Serial.println();
-  //  Serial.print(PID_value_Lui);
-  //  Serial.print("\t\t");
-  //  Serial.print("\t");
-  //  Serial.print(LSpeed);
-  //
-  //  Serial.print("\t");
-  //  Serial.print(RSpeed);
-  //  Serial.print("\n");
+  delay(10);
+      Serial.println();
+      Serial.print(PID_value_Lui);
+      Serial.print("\t\t");
+      Serial.print("\t");
+      Serial.print(LSpeed);
+  
+      Serial.print("\t");
+      Serial.print(RSpeed);
+      Serial.print("\n");
 }

@@ -9,70 +9,97 @@ void diemLayBong() {
   delay(500);
 
   trai();
-  delay(600);
+  delay(1200);
 
   dung();
   delay(500);
 
-  TimeTemp = millis();
   tienCham();
-  while ((millis() - TimeTemp) < 150 ) {
+  delay(150);
+  TimeTemp = millis();
+  while ((millis() - TimeTemp) < 50 ) {
     doc_CBT();
   }
 
-  while (!(GTtien[3] || GTtien[4] || GTtien[6])) {
+  while (!(GTtien[3] || GTtien[4])) {
     tienCham();
     doc_CBT();
-    doc_CBL();
   }
-
-  TimeTemp = millis();
+  tienCham();
+  delay(200);
+  
   trai();
-  while ((millis() - TimeTemp) < 400 ) {
+  delay(200);
+  doc_CBT();
+  doc_CBL();
+  delay(200);
+  doc_CBT();
+  doc_CBL();
+  delay(200);
+  doc_CBT();
+  doc_CBL();
+  delay(200);
+  doc_CBT();
+  doc_CBL();
+  TimeTemp = millis();
+  while ((millis() - TimeTemp) < 200 ) {
     doc_CBT();
     doc_CBL();
   }
+
 
   DK_Tien();
 }
 void veLine() {
   TimeTemp = millis();
   tien();
-  while ((millis() - TimeTemp) < 500 ) {
-    doc_CBT();
-    doc_CBL();
-  }
+  delay(200);
+  doc_CBT();
+  delay(200);
+  doc_CBT();
+  delay(100);
+  doc_CBT();
 
   dung();
   delay(500);
 
-  TimeTemp = millis();
   phai();
-  while ((millis() - TimeTemp) < 900 ) {
-    doc_CBT();
-    doc_CBL();
-  }
+  delay(200);
+  doc_CBT();
+  delay(200);
+  doc_CBT();
+  delay(200);
+  doc_CBT();
+  delay(200);
+  doc_CBT();
 
   dung();
   delay(500);
 
-  TimeTemp = millis();
   tienCham();
-  while ((millis() - TimeTemp) < 100 ) {
+  delay(50);
+  TimeTemp = millis();
+  while ((millis() - TimeTemp) < 150 ) {
     doc_CBT();
   }
 
   tienCham();
-  while (!(GTtien[3] || GTtien[4] || GTtien[6] || GTtien[1])) {
+  while (!(GTtien[3] || GTtien[4] )) {
     doc_CBT();
-    doc_CBL();
   }
 
-  TimeTemp = millis();
+
+
   phai();
-  while ((millis() - TimeTemp) < 400 ) {
+  delay(200);
+  doc_CBT();
+  delay(200);
+  doc_CBT();
+  TimeTemp = millis();
+  while ((millis() - TimeTemp) < 200 ) {
     doc_CBT();
-    doc_CBL();
   }
+
+
   DK_Tien();
 }

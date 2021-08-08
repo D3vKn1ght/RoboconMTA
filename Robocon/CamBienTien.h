@@ -1,6 +1,6 @@
 
 void doc_CBT()
-{  
+{
   Tien[0]  = analogRead(camBienTien1);
   Tien[1]  = analogRead(camBienTien2);
   Tien[2]  = analogRead(camBienTien3);
@@ -9,9 +9,10 @@ void doc_CBT()
   Tien[5]  = analogRead(camBienTien6);
   Tien[6]  = analogRead(camBienTien7);
   Tien[7]  = analogRead(camBienTien8);
+
   for (it = 0; it <= 7; it++)
   {
-    if (Tien[it] < tb)
+    if (Tien[it] > tb)
     {
       GTtien[it] = 0;
     }
@@ -60,24 +61,22 @@ void doc_CBT()
 
 void DK_Tien()
 {
-  SetTocDo = 100;
-  doc_CBT();
-  delay(10);
+  SetTocDo = 75;
   LSpeed = SetTocDo  + PID_value_Tien;
   RSpeed = SetTocDo - PID_value_Tien;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
 
   tien();
-
-    Serial.println();
-    Serial.print(PID_value_Tien);
-    Serial.print("\t\t");
-    Serial.print("\t");
-    Serial.print(LSpeed);
-  
-    Serial.print("\t");
-    Serial.print(RSpeed);
-    Serial.print("\n");
+  delay(10);
+  //  Serial.println();
+  //  Serial.print(PID_value_Tien);
+  //  Serial.print("\t\t");
+  //  Serial.print("\t");
+  //  Serial.print(LSpeed);
+  //
+  //  Serial.print("\t");
+  //  Serial.print(RSpeed);
+  //  Serial.print("\n");
 
 }
