@@ -9,7 +9,7 @@
 #define RPWM_R 6
 #define LPWM_R 7
 int TocDoXoay = 150;
-int SetTocDo = 70 ;
+int SetTocDo = 75 ;
 int LSpeed = SetTocDo;
 int RSpeed = SetTocDo;
 

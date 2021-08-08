@@ -3,7 +3,13 @@ void diemLayBong() {
   delay(500);
 
   lui();
-  delay(900);
+  delay(100);
+  for (int i = 0; i < 4; i++) {
+    doc_CBL();
+    delay(100);
+    DK_Lui();
+    delay(100);
+  }
 
   dung();
   delay(500);
@@ -15,55 +21,47 @@ void diemLayBong() {
   delay(500);
 
   tienCham();
-  delay(150);
-  TimeTemp = millis();
-  while ((millis() - TimeTemp) < 50 ) {
-    doc_CBT();
-  }
+  delay(200);
 
-  while (!(GTtien[3] || GTtien[4])) {
-    tienCham();
-    doc_CBT();
-  }
+  doc_CBT();
+
   tienCham();
+  while (!(GTtien[3] || GTtien[4])) {
+    doc_CBT();
+    delay(10);
+  }
   delay(200);
 
   trai();
   for (int i = 0; i < 4; i++) {
     doc_CBT();
+    delay(100);
     doc_CBL();
-    delay(200);
+    delay(100);
   }
-  doc_CBT();
-  doc_CBL();
-  TimeTemp = millis();
-  while ((millis() - TimeTemp) < 200 ) {
+  for (int i = 0; i < 20; i++) {
     doc_CBT();
+    delay(100);
     doc_CBL();
+    delay(100);
   }
-
 
   DK_Tien();
 }
 void veLine() {
-  TimeTemp = millis();
   tien();
   for (int i = 0; i < 9; i++) {
     doc_CBT();
-    delay(200);
+    delay(100);
+    DK_Tien();
+    delay(100);
   }
-
 
   dung();
   delay(500);
 
   phai();
-  for (int i = 0; i < 18; i++) {
-    doc_CBT();
-    delay(200);
-  }
-
-
+  delay(3600);
 
   dung();
   delay(500);
@@ -73,22 +71,14 @@ void veLine() {
     doc_CBT();
     delay(200);
   }
-  TimeTemp = millis();
-  while ((millis() - TimeTemp) < 50 ) {
+  for (int i = 0; i < 5; i++) {
     doc_CBT();
+    delay(10);
   }
   while (!(GTtien[3] || GTtien[4] )) {
     doc_CBT();
+    delay(10);
   }
-
-
-
-  //  phai();
-  // for (int i = 0; i < 2; i++) {
-  //    doc_CBT();
-  //    delay(200);
-  //  }
-
 
 
   tienCham();
@@ -96,11 +86,10 @@ void veLine() {
     doc_CBT();
     delay(200);
   }
-  TimeTemp = millis();
-  while ((millis() - TimeTemp) < 200 ) {
+  for (int i = 0; i < 20; i++) {
     doc_CBT();
+    delay(10);
   }
-
 
   DK_Tien();
 }

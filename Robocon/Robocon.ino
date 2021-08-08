@@ -25,12 +25,11 @@ void loop()
   //        Serial.print("\n");
   if ((GTtien[0] && GTtien[3]) || (GTtien[1] && GTtien[4]) || (GTtien[2] && GTtien[5]) || (GTtien[3] && GTtien[6]) || (GTtien[4] && GTtien[7]) ) {
     dem++;
-    TimeTemp = millis();
-    doc_CBL();
-    while ((millis() - TimeTemp) < 120 ) {
+    for (int i = 0; i < 6; i++) {
       doc_CBT();
-    }
-    doc_CBL();
+      doc_CBL();
+      delay(10);
+    }    
   }
   if (dem == 0) {
     DK_Tien();
