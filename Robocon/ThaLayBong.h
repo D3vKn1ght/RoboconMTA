@@ -6,9 +6,8 @@ void diemLayBong() {
   delay(100);
   for (int i = 0; i < 4; i++) {
     doc_CBL();
-    delay(100);
     DK_Lui();
-    delay(100);
+    delay(200);
   }
 
   dung();
@@ -33,17 +32,15 @@ void diemLayBong() {
   delay(200);
 
   trai();
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     doc_CBT();
-    delay(100);
     doc_CBL();
-    delay(100);
+    delay(200);
   }
   for (int i = 0; i < 20; i++) {
     doc_CBT();
-    delay(100);
     doc_CBL();
-    delay(100);
+    delay(10);
   }
 
   DK_Tien();
