@@ -55,7 +55,7 @@ float Kd2 = 30 ;
 float Ki2 = 0;
 
 //----------------------------------------Khoi tao ---------------------------------//
-int tb = 500;
+int tb = 400;
 bool viTri[] = {false, true, true, true, true, true, true};
 int iViTri = 0;
 unsigned long TimeTemp;

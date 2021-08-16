@@ -62,21 +62,21 @@ void doc_CBL()
 void DK_Lui()
 {
 
-  SetTocDo = 65;
-  LSpeed = SetTocDo  + PID_value_Lui;
-  RSpeed = SetTocDo - PID_value_Lui;
+  SetTocDo = 75;
+  LSpeed = SetTocDo  - PID_value_Lui;
+  RSpeed = SetTocDo + PID_value_Lui;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
 
   lui();
-  delay(10);
-      Serial.println();
-      Serial.print(PID_value_Lui);
-      Serial.print("\t\t");
-      Serial.print("\t");
-      Serial.print(LSpeed);
-  
-      Serial.print("\t");
-      Serial.print(RSpeed);
-      Serial.print("\n");
+
+  //      Serial.println();
+  //      Serial.print(PID_value_Lui);
+  //      Serial.print("\t\t");
+  //      Serial.print("\t");
+  //      Serial.print(LSpeed);
+  //
+  //      Serial.print("\t");
+  //      Serial.print(RSpeed);
+  //      Serial.print("\n");
 }

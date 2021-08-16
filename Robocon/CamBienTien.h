@@ -68,7 +68,7 @@ void DK_Tien()
   RSpeed = constrain(RSpeed, 0, 255);
 
   tien();
-  delay(10);
+
   //  Serial.println();
   //  Serial.print(PID_value_Tien);
   //  Serial.print("\t\t");

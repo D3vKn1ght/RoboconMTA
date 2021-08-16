@@ -36,6 +36,12 @@ void tienCham()
   RSpeed = 50;
   tien();
 }
+void luiCham()
+{
+  LSpeed = 50;
+  RSpeed = 50;
+  lui();
+}
 void dung()
 {
   analogWrite(RPWM_L, 0);

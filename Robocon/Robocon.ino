@@ -29,12 +29,9 @@ void loop()
       doc_CBT();
       doc_CBL();
       delay(20);
-    }    
+    }
   }
-  if (dem == 0) {
-    DK_Tien();
-  }
-  else if (dem == 1) {
+  if (dem == 1) {
     diemLayBong();
     dem++;
   }
@@ -42,16 +39,14 @@ void loop()
     dung();
     LayBong();
     delay(100);
+
     dem++;
   }
   else if (dem >= 4) {
     doc_CBL();
-    //      for (int i = 0; i <= 7; i++) {
-    //        Serial.print(SSLui[i]);
-    //        Serial.print("\t");
-    //      }
-    //      Serial.print("\n");
+    delay(10);
     DK_Lui();
+    
     if (digitalRead(congTacHanhTrinh)) {                                                                                                                                                                               //    if (digitalRead(congTacHanhTrinh)) {
       dung();
       ThaBong();
@@ -67,5 +62,12 @@ void loop()
 
 
 
+  // doc_CBL();
+  //          for (int i = 0; i <= 7; i++) {
+  //            Serial.print(SSLui[i]);
+  //            Serial.print("\t");
+  //          }
+  //          Serial.print("\n");
+  //    DK_Lui();
 
 }
