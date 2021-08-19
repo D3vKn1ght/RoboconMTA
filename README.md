@@ -1,3 +1,3 @@
 # Robocon
-Arduino 
-Điều khiển động cơ bằng DC 43A BTS7960
+ Arduino 
+ Điều khiển động cơ bằng DC 43A BTS7960
