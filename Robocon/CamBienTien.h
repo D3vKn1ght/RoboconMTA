@@ -61,7 +61,28 @@ void doc_CBT()
 
 void DK_Tien()
 {
-  SetTocDo = 75;
+  SetTocDo = 110;
+  LSpeed = SetTocDo  + PID_value_Tien;
+  RSpeed = SetTocDo - PID_value_Tien;
+  LSpeed = constrain(LSpeed, 0, 255);
+  RSpeed = constrain(RSpeed, 0, 255);
+
+  tien();
+
+  //  Serial.println();
+  //  Serial.print(PID_value_Tien);
+  //  Serial.print("\t\t");
+  //  Serial.print("\t");
+  //  Serial.print(LSpeed);
+  //
+  //  Serial.print("\t");
+  //  Serial.print(RSpeed);
+  //  Serial.print("\n");
+
+}
+void DK_Tien_Cham()
+{
+  SetTocDo = 90;
   LSpeed = SetTocDo  + PID_value_Tien;
   RSpeed = SetTocDo - PID_value_Tien;
   LSpeed = constrain(LSpeed, 0, 255);

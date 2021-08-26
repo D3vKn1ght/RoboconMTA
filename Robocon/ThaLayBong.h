@@ -14,7 +14,7 @@ void diemLayBong() {
   delay(500);
 
   trai();
-  delay(800);
+  delay(700);
 
   dung();
   delay(500);
@@ -29,7 +29,7 @@ void diemLayBong() {
     doc_CBT();
     delay(10);
   }
-  for (int i = 0; i < 25; i++) {
+  for (int i = 0; i < 29; i++) {
     doc_CBT();
     doc_CBL();
     delay(20);
@@ -56,7 +56,7 @@ void veLine() {
 
   doc_CBT();
   tien();
-  for (int i = 0; i < 8; i++) {
+  for (int i = 0; i < 6; i++) {
     doc_CBT();
     delay(100);
     DK_Tien();
@@ -67,13 +67,13 @@ void veLine() {
   delay(500);
 
   phai();
-  delay(3200);
+  delay(3880);
 
   dung();
   delay(500);
 
   tienCham();
-  delay(1900);
+  delay(500);
   for (int i = 0; i < 50; i++) {
     doc_CBT();
     delay(10);
@@ -85,7 +85,7 @@ void veLine() {
 
 
   trai();
-  for (int i = 0; i < 33; i++) {
+  for (int i = 0; i < 72; i++) {
     doc_CBT();
     delay(10);
   }

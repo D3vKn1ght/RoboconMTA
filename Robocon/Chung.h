@@ -10,8 +10,8 @@
 #define LPWM_L 3
 #define RPWM_R 6
 #define LPWM_R 7
-int TocDoXoay = 150;
-int SetTocDo = 75 ;
+int TocDoXoay = 200;
+int SetTocDo = 120 ;
 int LSpeed = SetTocDo;
 int RSpeed = SetTocDo;
 
@@ -25,14 +25,15 @@ int RSpeed = SetTocDo;
 #define camBienTien7 A3
 #define camBienTien8 A7
 int Tien[8];
+
 int GTtien[8];
 int  it;
 float Et, Errort = 0, previous_Errort = 0;
 float PID_value_Tien;
 int St, Tt;
 float Pt = 0, It = 0, Dt = 0, previous_It = 0;
-float Kp = 40;
-float Kd = 30 ;
+float Kp = 50;
+float Kd = 20 ;
 float Ki = 0;
 //----------------------------------------Cam Bien Lui ---------------------------------//
 #define camBienLui1 A8
@@ -50,8 +51,8 @@ float El, Errorl = 0, previous_Errorl = 0;
 float PID_value_Lui = 0;
 int Sl, Tl;
 float Pl = 0, Il = 0, Dl = 0, previous_Il = 0;
-float Kp2 = 40;
-float Kd2 = 30 ;
+float Kp2 = 50;
+float Kd2 = 20 ;
 float Ki2 = 0;
 
 //----------------------------------------Khoi tao ---------------------------------//

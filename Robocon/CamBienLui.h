@@ -62,7 +62,7 @@ void doc_CBL()
 void DK_Lui()
 {
 
-  SetTocDo = 75;
+  SetTocDo = 90;
   LSpeed = SetTocDo  - PID_value_Lui;
   RSpeed = SetTocDo + PID_value_Lui;
   LSpeed = constrain(LSpeed, 0, 255);
