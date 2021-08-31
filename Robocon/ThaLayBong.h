@@ -42,7 +42,7 @@ void diemLayBong() {
     doc_CBL();
     delay(200);
   }
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < 30; i++) {
     doc_CBT();
     doc_CBL();
     delay(10);
@@ -67,7 +67,7 @@ void veLine() {
   delay(500);
 
   phai();
-  delay(3880);
+  delay(3050);
 
   dung();
   delay(500);
@@ -85,7 +85,7 @@ void veLine() {
 
 
   trai();
-  for (int i = 0; i < 72; i++) {
+  for (int i = 0; i < 70; i++) {
     doc_CBT();
     delay(10);
   }

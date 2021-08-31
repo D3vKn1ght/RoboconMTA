@@ -47,8 +47,8 @@ void loop()
   else if (dem >= 4) {
     doc_CBL();   
      if ((GTlui[0] && GTlui[3]) || (GTlui[1] && GTlui[4]) || (GTlui[2] && GTlui[5]) || (GTlui[3] && GTlui[6]) || (GTlui[4] && GTlui[7]) ) {
-      DK_Lui();
-      delay(60);
+      Errorl=0;
+      delay(150);
       } 
     DK_Lui();
 
