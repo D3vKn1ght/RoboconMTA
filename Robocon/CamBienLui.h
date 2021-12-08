@@ -10,7 +10,7 @@ void doc_CBL()
   SSLui[5]  = analogRead(camBienLui6);
   SSLui[6]  = analogRead(camBienLui7);
   SSLui[7]  = analogRead(camBienLui8);
-
+  //GTlui[0] = 0;
   for (iLui = 0; iLui <= 7; iLui++)
   {
     if (SSLui[iLui] > tb)
@@ -23,33 +23,37 @@ void doc_CBL()
 
     }
   }
-  if (GTlui[3] == 1 || GTlui[4] == 1)
+  if (GTlui[3] == 1 && GTlui[4] == 1)
+  {
+    Errorl = 0;
+  }
+  else if (GTlui[3] == 1 || GTlui[4] == 1)
   {
     Errorl = 0;
   }
   else if (GTlui[2] == 1)
   {
-    Errorl = 1;
+    Errorl = 2;
   }
   else if (GTlui[5] == 1)
   {
-    Errorl = -1;
+    Errorl = -2;
   }
   else if (GTlui[1] == 1)
   {
-    Errorl = 2;
+    Errorl = 3;
   }
   else if (GTlui[6] == 1)
   {
-    Errorl = -2;
+    Errorl = -3;
   }
   else if (GTlui[0] == 1)
   {
-    Errorl = 3;
+    Errorl = 4;
   }
   else if (GTlui[7] == 1)
   {
-    Errorl = -3;
+    Errorl = -4;
   }
   Pl = Errorl;
   Il = Il + previous_Il;
@@ -62,21 +66,63 @@ void doc_CBL()
 void DK_Lui()
 {
 
-  SetTocDo = 90;
+  SetTocDo = 80;
   LSpeed = SetTocDo  - PID_value_Lui;
   RSpeed = SetTocDo + PID_value_Lui;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
 
-  lui();
+  //  lui();XoayPhai
+  if (Errorl == XoayPhai) {
+    trai();
+    delay(50);
+    tienCham();
+    delay(10);
+  }
+  else if (Errorl == XoayTrai) {
+    phai();
+    delay(50);
+    tienCham();
+    delay(10);
+  }
+  else {
+    lui();
+  }
 
-  //      Serial.println();
-  //      Serial.print(PID_value_Lui);
-  //      Serial.print("\t\t");
-  //      Serial.print("\t");
-  //      Serial.print(LSpeed);
+  //        Serial.println();
+  //        Serial.print(PID_value_Lui);
+  //        Serial.print("\t\t");
+  //        Serial.print("\t");
+  //        Serial.print(LSpeed);
   //
-  //      Serial.print("\t");
-  //      Serial.print(RSpeed);
-  //      Serial.print("\n");
+  //        Serial.print("\t");
+  //        Serial.print(RSpeed);
+  //        Serial.print("\n");
+}
+void DK_Lui(int tocDo)
+{
+
+  SetTocDo = tocDo;
+  LSpeed = SetTocDo  - PID_value_Lui;
+  RSpeed = SetTocDo + PID_value_Lui;
+  LSpeed = constrain(LSpeed, 0, 255);
+  RSpeed = constrain(RSpeed, 0, 255);
+
+  //  lui();XoayPhai
+  if (Errorl == XoayPhai) {
+    trai();
+    delay(50);
+    tienCham();
+    delay(10);
+  }
+  else if (Errorl == XoayTrai) {
+    phai();
+    delay(50);
+    tienCham();
+    delay(10);
+  }
+  else {
+    lui();
+  }
+
 }

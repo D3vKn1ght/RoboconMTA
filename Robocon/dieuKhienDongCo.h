@@ -1,3 +1,45 @@
+#if defined(IsSanTrai) && IsSanTrai > 0
+#define XoayTrai -4
+#define XoayPhai 4
+void welcome(){
+  Serial.print("San trai\n");
+  }
+void trai()
+{
+  analogWrite(RPWM_L, TocDoXoay);
+  analogWrite(LPWM_L, 0);
+  analogWrite(RPWM_R, TocDoXoay);
+  analogWrite(LPWM_R, 0);
+}
+void phai()
+{
+  analogWrite(RPWM_L, 0);
+  analogWrite(LPWM_L, TocDoXoay);
+  analogWrite(RPWM_R, 0);
+  analogWrite(LPWM_R, TocDoXoay);
+}
+#else
+#define XoayTrai 4
+#define XoayPhai -4
+void welcome(){
+  Serial.print("San trai\n");
+  };
+void phai()
+{
+  analogWrite(RPWM_L, TocDoXoay);
+  analogWrite(LPWM_L, 0);
+  analogWrite(RPWM_R, TocDoXoay);
+  analogWrite(LPWM_R, 0);
+}
+void trai()
+{
+  analogWrite(RPWM_L, 0);
+  analogWrite(LPWM_L, TocDoXoay);
+  analogWrite(RPWM_R, 0);
+  analogWrite(LPWM_R, TocDoXoay);
+}
+#endif
+
 void tien()
 {
   analogWrite(RPWM_L, LSpeed);
@@ -14,20 +56,18 @@ void lui()
   analogWrite(LPWM_R, 0);
 }
 
-void phai()
+void tien(int tocDo)
 {
-  analogWrite(RPWM_L, TocDoXoay);
-  analogWrite(LPWM_L, 0);
-  analogWrite(RPWM_R, TocDoXoay);
-  analogWrite(LPWM_R, 0);
+  LSpeed = tocDo;
+  RSpeed = tocDo;
+  tien();
 }
 
-void trai()
+void lui(int tocDo)
 {
-  analogWrite(RPWM_L, 0);
-  analogWrite(LPWM_L, TocDoXoay);
-  analogWrite(RPWM_R, 0);
-  analogWrite(LPWM_R, TocDoXoay);
+  LSpeed = tocDo;
+  RSpeed = tocDo;
+  lui();
 }
 
 void tienCham()

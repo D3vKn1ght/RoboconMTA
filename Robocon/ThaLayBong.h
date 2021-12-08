@@ -1,26 +1,38 @@
+void dungNeuConBong() {
+  while (true) {
+    doc_CBT();
+    doc_CBL();
+    DK_Tien_Cham();
+    if ((GTlui[2] || GTlui[3] || GTlui[4] || GTlui[5]) && (GTtien[3] || GTtien[4])) {
+      delay(400);
+      dung();
+      delay(200);
+      dem = 4;
+      return;
+
+    }
+  }
+}
+
 void diemLayBong() {
   dung();
-  delay(500);
+  delay(300);
 
   lui();
-  delay(100);
-  for (int i = 0; i < 3; i++) {
-    doc_CBL();
-    DK_Lui();
-    delay(200);
-  }
-
-  dung();
-  delay(500);
-
-  trai();
   delay(700);
 
+
   dung();
-  delay(500);
+  delay(200);
+
+  trai();
+  delay(400);
+
+  dung();
+  delay(100);
 
   tienCham();
-  delay(200);
+  delay(600);
 
   doc_CBT();
 
@@ -29,65 +41,66 @@ void diemLayBong() {
     doc_CBT();
     delay(10);
   }
-  for (int i = 0; i < 29; i++) {
+  for (int i = 0; i < 10; i++) {
     doc_CBT();
     doc_CBL();
     delay(20);
   }
 
-
   trai();
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < 3; i++) {
     doc_CBT();
     doc_CBL();
-    delay(200);
+    delay(100);
   }
-  for (int i = 0; i < 30; i++) {
+  for (int i = 0; i < 20; i++) {
     doc_CBT();
     doc_CBL();
     delay(10);
   }
-
-  DK_Tien();
+  dung();
+  delay(50);
+  DK_Tien_Cham();
 }
 void veLine() {
-  tienCham();
-  delay(400);
-
-  doc_CBT();
-  tien();
-  for (int i = 0; i < 6; i++) {
+  tien(100);
+  delay(1000);
+  while (true) {
     doc_CBT();
-    delay(100);
+    doc_CBL();
     DK_Tien();
-    delay(100);
+    if ((GTlui[1] || GTlui[2] || GTlui[3] || GTlui[4] || GTlui[5] || GTlui[6]) && (GTtien[3] || GTtien[4])) {
+      break;
+    }
   }
 
   dung();
-  delay(500);
+  delay(200);
 
   phai();
-  delay(3050);
-
-  dung();
-  delay(500);
-
+  delay(1200);
+  int temp = TocDoXoay;
+  TocDoXoay = 150;
+  while (true) {
+    doc_CBT();
+    phai();
+    TocDoXoay = temp;
+    delay(30);
+    tien(100);
+    delay(30);
+    if (GTtien[1] || GTtien[2] || (GTtien[3] || GTtien[4] ) || GTtien[5] || GTtien[6] ) {
+      break;
+    }
+  }
   tienCham();
-  delay(500);
-  for (int i = 0; i < 50; i++) {
+  for (int i = 0; i < 20; i++) {
     doc_CBT();
     delay(10);
   }
-  while (!(GTtien[3] || GTtien[4] )) {
-    doc_CBT();
-    delay(10);
-  }
-
-
   trai();
-  for (int i = 0; i < 70; i++) {
+  for (int i = 0; i < 20; i++) {
     doc_CBT();
-    delay(10);
+    delay(20);
   }
 
   DK_Tien();
