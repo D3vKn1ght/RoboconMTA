@@ -1,5 +1,24 @@
-bool checkNgaBa()
+void checkSan() {
+  if (IsSanTrai) {
+    lostLineLeft = - 4;
+    lostLineRight = 4;
+  }
+  else {
+    lostLineLeft = 4;
+    lostLineRight = -4;
+  }
+}
+void calPosReverse() {
+  for ( int i = 3; i >= 1; i--) {
+    if (viTriThaBong[i] == true) {
+      ViTriDaoNguoc = i;
+      return;
+    }
+  }
+}
+bool checkNgaBaTien()
 {
+
   if ((GTtien[0] && GTtien[1]) || (GTtien[6] && GTtien[7]))
   {
     int demSoLineSang = 0;
@@ -36,58 +55,84 @@ bool checkNgaBaLui()
   }
   return false;
 }
+bool checkNgaBaTrai()
+{
+  if ((GTTrai[0] && GTTrai[1]) || (GTTrai[6] && GTTrai[7]))
+  {
+    int demSoLineSang = 0;
+    for (int i = 0; i <= 7; i++)
+    {
+      if (GTTrai[i])
+      {
+        demSoLineSang++;
+      }
+    }
+    if (demSoLineSang >= 4)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+bool checkNgaBaPhai()
+{
+  if ((GTPhai[0] && GTPhai[1]) || (GTPhai[6] && GTPhai[7]))
+  {
+    int demSoLineSang = 0;
+    for (int i = 0; i <= 7; i++)
+    {
+      if (GTPhai[i])
+      {
+        demSoLineSang++;
+      }
+    }
+    if (demSoLineSang >= 4)
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
 void KhoiDau()
 {
   doc_CBT();
-  while (!checkNgaBa()) {
+  while (!checkNgaBaTien()) {
     doc_CBT();
   }
-  tien(70);
-  delay(1000);
-  dung();
-  delay(1000);
-  lui(80);
-  delay(1500);
-  dung();
-
-  dung();
-  delay(200);
-
-  trai();
-  delay(400);
-
-  dung();
-  delay(100);
-
-  tienCham();
-  delay(600);
-
+  tien(TocDoCham);
+  delay(500);
+  TimeTemp = millis();
+  while (millis() - TimeTemp < 600)
+  {
+    doc_CBT();
+    xoayTrai(TocDoXoayCham);
+  }
   doc_CBT();
-
-  tienCham();
-  while (!(GTtien[3] || GTtien[4])) {
+  int temp = Errort;
+  bool over = false;
+  while (true) {
+    temp = Errort;
     doc_CBT();
-    delay(10);
+    xoayTrai(TocDoXoayCham);
+    //check quay vuot line chinh
+    if (over == false) {
+      if (Errort >= temp) {
+        continue;
+      }
+      else {
+        over = true;
+        //        delay(50);
+      }
+    }
+    //cham line moi
+    else {
+      if (GTtien[2] || GTtien[3] || GTtien[4] || GTtien[5]) {
+        break;
+      }
+    }
   }
-  for (int i = 0; i < 10; i++) {
-    doc_CBT();
-    doc_CBL();
-    delay(20);
-  }
-  trai();
-  for (int i = 0; i < 3; i++) {
-    doc_CBT();
-    doc_CBL();
-    delay(100);
-  }
-  for (int i = 0; i < 20; i++) {
-    doc_CBT();
-    doc_CBL();
-    delay(10);
-  }
-  dung();
-  delay(50);
-  DK_Tien_Cham();
+  DK_Tien(TocDo);
 
 }
 void switchRetry() {
@@ -97,28 +142,52 @@ void switchRetry() {
     for (int i = 0; i < 3; i++) {
 
       if (!digitalRead(defineLayBong[i])) {
-        Serial.print("Lay Bong ");
-        Serial.print(i + 1);
-        Serial.print("--");
+//        Serial.print("Lay Bong ");
+//        Serial.print(i + 1);
+//        Serial.print("--");
         viTriLayBong[i + 1] = true;
       }
       if (!digitalRead(defineThaBong[i])) {
-        Serial.print("Tha Bong ");
-        Serial.print(i + 1);
-        Serial.print("--");
+//        Serial.print("Tha Bong ");
+//        Serial.print(i + 1);
+//        Serial.print("--");
         viTriThaBong[i + 1] = true;
       }
     }
-    Serial.print("\n");
-    //      };
-    //    Serial.println(digitalRead(congTacHanhTrinh));
+    for (int i = 0; i < 4; i++) {
+      if (!digitalRead(defineGatBong[i])) {
+//        Serial.print("Gat Bong ");
+//        Serial.print(i + 1);
+//        Serial.print("--");
+        viTriGatBong[i + 1] = true;
+      }
+      if (!digitalRead(defineThaBongDoiBan[i])) {
+//        Serial.print("Tha Bong Doi Ban  ");
+//        Serial.print(i + 1);
+//        Serial.print("--");
+        viTriThaBongDoiBan[i + 1] = true;
+      }
+    }
+    if (!digitalRead(DaoNguoc)) {
+      rev = REV_CHUA;
+//      Serial.print("\nDao nguoc");
+    }
+    if (viTriThaBongDoiBan[4] == true) {
+      viTriThaBongDoiBan[5] = true;
+      viTriThaBongDoiBan[4] = false;
+    }
+    if (viTriGatBong[4] == true) {
+      viTriGatBong[5] = true;
+      viTriGatBong[4] = false;
+    }
+//    Serial.print("\n");
     if (digitalRead(congTacHanhTrinh)) {
-      Serial.println("Cong tac hanh trinh");
+//      Serial.println("Cong tac hanh trinh");
       return;
     }
-    if (digitalRead(congTacNhanBong)) {
-      Serial.println("Cong tac nhan bong");
-    }
+//    if (digitalRead(congTacNhanBong)) {
+//      Serial.println("Cong tac nhan bong");
+//    }
   }
   KhoiDau();
 }
@@ -128,6 +197,6 @@ void vuotQuaChuZ()
   while (millis() - TimeTemp < timeZ)
   {
     doc_CBT();
-    DK_Tien();
+    DK_Tien(TocDo);
   }
 }

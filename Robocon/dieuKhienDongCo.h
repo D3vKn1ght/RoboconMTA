@@ -1,59 +1,244 @@
-#if defined(IsSanTrai) && IsSanTrai > 0
-#define XoayTrai -4
-#define XoayPhai 4
-void welcome(){
-  Serial.print("San trai\n");
-  }
-void trai()
-{
-  analogWrite(RPWM_L, TocDoXoay);
-  analogWrite(LPWM_L, 0);
-  analogWrite(RPWM_R, TocDoXoay);
-  analogWrite(LPWM_R, 0);
-}
-void phai()
-{
-  analogWrite(RPWM_L, 0);
-  analogWrite(LPWM_L, TocDoXoay);
-  analogWrite(RPWM_R, 0);
-  analogWrite(LPWM_R, TocDoXoay);
-}
-#else
-#define XoayTrai 4
-#define XoayPhai -4
-void welcome(){
-  Serial.print("San trai\n");
-  };
-void phai()
-{
-  analogWrite(RPWM_L, TocDoXoay);
-  analogWrite(LPWM_L, 0);
-  analogWrite(RPWM_R, TocDoXoay);
-  analogWrite(LPWM_R, 0);
-}
-void trai()
-{
-  analogWrite(RPWM_L, 0);
-  analogWrite(LPWM_L, TocDoXoay);
-  analogWrite(RPWM_R, 0);
-  analogWrite(LPWM_R, TocDoXoay);
-}
-#endif
 
-void tien()
-{
-  analogWrite(RPWM_L, LSpeed);
-  analogWrite(LPWM_L, 0);
-  analogWrite(RPWM_R, 0);
-  analogWrite(LPWM_R, RSpeed);
+void welcome() {
+  Serial.print("San trai\n");
 }
+void diNgangTrai(int tocDo) {
+  analogWrite(RPWM_L1, tocDo);
+  analogWrite(LPWM_L1, 0);
+  analogWrite(RPWM_L2, 0);
+  analogWrite(LPWM_L2, tocDo);
+  analogWrite(RPWM_R1, tocDo);
+  analogWrite(LPWM_R1, 0);
+  analogWrite(RPWM_R2, 0);
+  analogWrite(LPWM_R2, tocDo);
+}
+void diNgangTraiHaiBanh(int tocDo) {
+  analogWrite(RPWM_L1, tocDo);
+  analogWrite(LPWM_L1, 0);
+  analogWrite(RPWM_L2, 0);
+  analogWrite(LPWM_L2, tocDo);
+  analogWrite(RPWM_R1, 0);
+  analogWrite(LPWM_R1, 0);
+  analogWrite(RPWM_R2, 0);
+  analogWrite(LPWM_R2, 0);
+}
+void diNgangPhai(int tocDo) {
+  analogWrite(RPWM_L1, 0);
+  analogWrite(LPWM_L1, tocDo);
+  analogWrite(RPWM_L2, tocDo);
+  analogWrite(LPWM_L2, 0);
+  analogWrite(RPWM_R1, 0);
+  analogWrite(LPWM_R1, tocDo);
+  analogWrite(RPWM_R2, tocDo);
+  analogWrite(LPWM_R2, 0);
+}
+void diNgangPhaiHaiBanh(int tocDo) {
+  analogWrite(RPWM_L1, 0);
+  analogWrite(LPWM_L1, 0);
+  analogWrite(RPWM_L2, 0);
+  analogWrite(LPWM_L2, 0);
+  analogWrite(RPWM_R1, 0);
+  analogWrite(LPWM_R1, tocDo);
+  analogWrite(RPWM_R2, tocDo);
+  analogWrite(LPWM_R2, 0);
+}
+void RePhaiNgaBa(int tocDo) {
+  if (IsSanTrai) {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, tocDo);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, tocDo / 2 );
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, tocDo / 2);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, 0);
+  }
+  else {
+    analogWrite(RPWM_L1, tocDo / 2);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, 0 );
+    analogWrite(RPWM_R1, tocDo);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, tocDo / 2);
+    analogWrite(LPWM_R2, 0);
+  }
+}
+
+void ReTraiNgaBa(int tocDo)
+{
+  IsSanTrai = !IsSanTrai;
+  RePhaiNgaBa(tocDo);
+  IsSanTrai = !IsSanTrai;
+
+}
+
+void xoayTrai(int tocDo)
+{
+  if (IsSanTrai) {
+    analogWrite(RPWM_L1, tocDo);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, tocDo);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, tocDo);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, tocDo);
+    analogWrite(LPWM_R2, 0);
+  }
+  else {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, tocDo);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, tocDo);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, tocDo);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, tocDo);
+  }
+}
+void xoayPhai(int tocDo)
+{
+  IsSanTrai = !IsSanTrai;
+  xoayTrai(tocDo);
+  IsSanTrai = !IsSanTrai;
+}
+void xoayTraiTren(int tocDo)
+{
+  if (IsSanTrai) {
+    analogWrite(RPWM_L1, tocDo);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, tocDo);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, 0);
+  }
+  else {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, tocDo);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, tocDo);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, 0);
+  }
+}
+void xoayPhaiTren(int tocDo)
+{
+  IsSanTrai = !IsSanTrai;
+  xoayTraiTren(tocDo);
+  IsSanTrai = !IsSanTrai;
+}
+void xoayTraiDuoi(int tocDo)
+{
+  if (!IsSanTrai) {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, tocDo);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, tocDo);
+    analogWrite(LPWM_R2, 0);
+  }
+  else {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, tocDo);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, tocDo);
+  }
+}
+void xoayPhaiDuoi(int tocDo)
+{
+  IsSanTrai = !IsSanTrai;
+  xoayTraiDuoi(tocDo);
+  IsSanTrai = !IsSanTrai;
+}
+void xoayTraiTrai(int tocDo)
+{
+  if (IsSanTrai) {
+    analogWrite(RPWM_L1, tocDo);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, tocDo);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, 0);
+  }
+  else {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, tocDo);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, tocDo);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, 0);
+  }
+}
+void xoayPhaiTrai(int tocDo)
+{ IsSanTrai = !IsSanTrai;
+  xoayTraiTrai(tocDo);
+  IsSanTrai = !IsSanTrai;
+}
+void xoayTraiPhai(int tocDo)
+{
+  if (IsSanTrai) {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, tocDo);
+    analogWrite(LPWM_R1, 0);
+    analogWrite(RPWM_R2, tocDo);
+    analogWrite(LPWM_R2, 0);
+  }
+  else {
+    analogWrite(RPWM_L1, 0);
+    analogWrite(LPWM_L1, 0);
+    analogWrite(RPWM_L2, 0);
+    analogWrite(LPWM_L2, 0);
+    analogWrite(RPWM_R1, 0);
+    analogWrite(LPWM_R1, tocDo);
+    analogWrite(RPWM_R2, 0);
+    analogWrite(LPWM_R2, tocDo);
+  }
+}
+void xoayPhaiPhai(int tocDo)
+{ IsSanTrai = !IsSanTrai;
+  xoayTraiPhai(tocDo);
+  IsSanTrai = !IsSanTrai;
+}
+
 
 void lui()
 {
-  analogWrite(RPWM_L, 0);
-  analogWrite(LPWM_L, LSpeed);
-  analogWrite(RPWM_R, RSpeed);
-  analogWrite(LPWM_R, 0);
+  analogWrite(RPWM_L1, LSpeed);
+  analogWrite(LPWM_L1, 0);
+  analogWrite(RPWM_L2, LSpeed);
+  analogWrite(LPWM_L2, 0);
+  analogWrite(RPWM_R1, 0);
+  analogWrite(LPWM_R1, RSpeed);
+  analogWrite(RPWM_R2, 0);
+  analogWrite(LPWM_R2, RSpeed);
+}
+void tien()
+{
+  analogWrite(RPWM_L1, 0);
+  analogWrite(LPWM_L1, LSpeed);
+  analogWrite(RPWM_L2, 0);
+  analogWrite(LPWM_L2, LSpeed);
+  analogWrite(RPWM_R1, RSpeed);
+  analogWrite(LPWM_R1, 0);
+  analogWrite(RPWM_R2, RSpeed);
+  analogWrite(LPWM_R2, 0);
 }
 
 void tien(int tocDo)
@@ -72,20 +257,24 @@ void lui(int tocDo)
 
 void tienCham()
 {
-  LSpeed = 50;
-  RSpeed = 50;
+  LSpeed = TocDoCham;
+  RSpeed = TocDoCham;
   tien();
 }
 void luiCham()
 {
-  LSpeed = 50;
-  RSpeed = 50;
+  LSpeed = TocDoCham;
+  RSpeed = TocDoCham;
   lui();
 }
 void dung()
 {
-  analogWrite(RPWM_L, 0);
-  analogWrite(LPWM_L, 0);
-  analogWrite(RPWM_R, 0);
-  analogWrite(LPWM_R, 0);
+  analogWrite(RPWM_L1, 0);
+  analogWrite(LPWM_L1, 0);
+  analogWrite(RPWM_L2, 0);
+  analogWrite(LPWM_L2, 0);
+  analogWrite(RPWM_R1, 0);
+  analogWrite(LPWM_R1, 0);
+  analogWrite(RPWM_R2, 0);
+  analogWrite(LPWM_R2, 0);
 }

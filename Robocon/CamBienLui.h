@@ -55,6 +55,7 @@ void doc_CBL()
   {
     Errorl = -4;
   }
+
   Pl = Errorl;
   Il = Il + previous_Il;
   Dl = Errorl - previous_Errorl;
@@ -63,26 +64,23 @@ void doc_CBL()
   previous_Errorl = Errorl;
 }
 
-void DK_Lui()
+void DK_Lui(int tocDo)
 {
-
-  SetTocDo = 80;
-  LSpeed = SetTocDo  - PID_value_Lui;
-  RSpeed = SetTocDo + PID_value_Lui;
+  LSpeed = tocDo  + PID_value_Lui;
+  RSpeed = tocDo - PID_value_Lui;
   LSpeed = constrain(LSpeed, 0, 255);
   RSpeed = constrain(RSpeed, 0, 255);
 
-  //  lui();XoayPhai
-  if (Errorl == XoayPhai) {
-    trai();
+  if (Errorl == lostLineRight) {
+    xoayTrai(TocDoXoay);
     delay(50);
-    tienCham();
+    luiCham();
     delay(10);
   }
-  else if (Errorl == XoayTrai) {
-    phai();
+  else if (Errorl ==  lostLineLeft) {
+    xoayPhai(TocDoXoay);
     delay(50);
-    tienCham();
+    luiCham();
     delay(10);
   }
   else {
@@ -98,31 +96,4 @@ void DK_Lui()
   //        Serial.print("\t");
   //        Serial.print(RSpeed);
   //        Serial.print("\n");
-}
-void DK_Lui(int tocDo)
-{
-
-  SetTocDo = tocDo;
-  LSpeed = SetTocDo  - PID_value_Lui;
-  RSpeed = SetTocDo + PID_value_Lui;
-  LSpeed = constrain(LSpeed, 0, 255);
-  RSpeed = constrain(RSpeed, 0, 255);
-
-  //  lui();XoayPhai
-  if (Errorl == XoayPhai) {
-    trai();
-    delay(50);
-    tienCham();
-    delay(10);
-  }
-  else if (Errorl == XoayTrai) {
-    phai();
-    delay(50);
-    tienCham();
-    delay(10);
-  }
-  else {
-    lui();
-  }
-
 }
